@@ -1,0 +1,38 @@
+<%- include ('./partials/_header'); -%>
+    <!-- Formulario de modificacion-->
+    <div class="container" style="text-align: center;">
+        <div class="row">
+            <div class="col-md-5 offset-md-3">
+                <div class="card" style="height: 100%;">
+                    <div class="card-body">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQyJ8EMupCJMw544kabbpkD8KPVjSLicdoD0w&usqp=CAU" class="mr-3" alt="Coffe Icon" style="width: 5em;">
+                        <h1><span style="color:#FCD116;">C</span><span style="color:#003893;">o</span><span style="color:#CE1126;">l</span>Coffee World</h1>
+                        <h6>Since 1997</h6>
+                        <hr>
+                        <form action="/edit/<%= usuario._id %>" method="POST">
+                            <div class="form-group">
+                                <label><h3 style="line-height: 2%;">Module of Update</h3><br>"Where we going to feel the essential of flavors and  taste of the drinks of <span style="font-weight: bold; ">the Gods</span>".</label>
+                            </div>
+                            <hr>
+                            <div class="form-group">
+                                <label>Please, complete this survey to get the World MasterCoffee of this ColCoffee World 2020<br><small style="color: royalblue;">( The scale of this evaluation is 1=Bad to 5= Excellent )</small></label>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="company" placeholder="Which company sold you the coffee?" class="form-control text-center" value="<%= usuario.company%>" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="drink" placeholder="What kind of coffee do you ordered?" class="form-control text-center" value="<%= usuario.drink%>" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="number" name="evaluation" placeholder="From 1 to 5 how was your experience?" class="form-control text-center" value="<%= usuario.evaluation%>" required min="1" max="5">
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-success btn-block font-weight-bold" href="#">Update Vote</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include ('./partials/_footer'); -%>

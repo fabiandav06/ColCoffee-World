@@ -1,0 +1,77 @@
+<%- include ('./partials/_header'); -%>
+
+    <div class="container text-center">
+        <div class="row">
+            <!-- Formulario de servicio-->
+            <div class="col-md-5">
+                <div class="card">
+                    <div class="card-body">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQyJ8EMupCJMw544kabbpkD8KPVjSLicdoD0w&usqp=CAU" class="mr-3" alt="Coffe Icon" style="width: 5em;">
+                        <h1><span style="color:#FCD116;">C</span><span style="color:#003893;">o</span><span style="color:#CE1126;">l</span>Coffee World</h1>
+                        <h6>Since 1997</h6>
+                        <hr>
+                        <form action="/add" method="POST">
+                            <div class="form-group">
+                                <label>Welcome! To one of the the best events around the world, this is our fest, this is our vibes. Where we going to feel the essential of flavors and  taste of the drinks of <span style="font-weight: bold; ">the Gods</span></span>.</label>
+                            </div>
+                            <hr>
+                            <div class="form-group">
+                                <label>Please, complete this survey to get the World MasterCoffee of this ColCoffee World 2020<br><small style="color: royalblue;">( The scale of this evaluation is 1=Bad to 5= Excellent )</small></label>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="company" placeholder="Which company sold you the coffee?" class="form-control text-center" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="drink" placeholder="What kind of coffee do you ordered?" class="form-control text-center" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="number" name="evaluation" placeholder="From 1 to 5 how was your experience?" class="form-control text-center" required min="1" max="5">
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-success btn-block font-weight-bold" href="#">Register Vote</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lista de la orden-->
+            <div class="col-md-7">
+                <table class=" table table-bordered table-hover">
+                    <thead style="background-color: orange;">
+                        <tr>
+                            <th>N°</th>
+                            <th>Company</th>
+                            <th>Drink Coffee</th>
+                            <th>Evaluation</th>
+                            <th>Operations</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for(var i = 0; i < usuarios.length; i++) { %>
+                            <tr style="color: black; font-weight: bold; background-color: #C8C7C4;">
+                                <td>
+                                    <%= i + 1 %>
+                                </td>
+                                <td>
+                                    <%= usuarios[i].company%>
+                                </td>
+                                <td>
+                                    <%= usuarios[i].drink%>
+                                </td>
+                                <td>
+                                    <%= usuarios[i].evaluation%>
+                                </td>
+                                <td>
+                                    <a href="/edit/<%= usuarios[i]._id %>" type="submit" class="btn btn-primary"> Update </a>
+                                    <a href="/delete/<%= usuarios[i]._id %>" type="submit" class="btn btn-danger"> Delete </a>
+                                </td>
+                            </tr>
+                            <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <%- include ('./partials/_footer'); -%>
