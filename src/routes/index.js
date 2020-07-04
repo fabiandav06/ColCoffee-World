@@ -1,7 +1,16 @@
-const express = require('express');
-const router = express.Router();
+/*
+############################################
+AQUI CREO TODAS MIS RUTAS PARA UTILIZAR EN EL
+ARCHIVO DE SERVER; Y  ASI, ESTAS PUEDAN SER 
+UTILIZADAS POR LOS SERVICIOS DEL FRONTEND
+    - Fabian David Navarro Cano.
+#########################################
+*/
 
-const Usuario = require('../models/task');
+const express = require('express'); // creo e importacion el modulo o dependencia express, para una eficiencia de escritura en NodeJs y en sus procesos HTTP
+const router = express.Router(); // creo un enrutador para mejorar mi servicios en las transferencias de metodos para los HTTP
+
+const Usuario = require('../models/cofUser'); // Creo una variable, donde almaceno un objeto con mis cararacteriticas del Usuario en la DB.
 
 
 router.get('/', async(req, res) => {
@@ -18,7 +27,7 @@ router.post('/add', async(req, res) => {
 });
 
 router.get('/delete/:id', async(req, res) => {
-    const { id } = req.params;
+    const { id } = req.params; // Captador de parametros a partir de una destructuracion lo cual facilita buscar el id en el objeto
     await Usuario.remove({ _id: id });
     res.redirect('/');
 });
